@@ -26,3 +26,17 @@ names(Data)
 head(Data)
 ```
 
+```{r}
+print("Total of Missing values")
+sum(is.na(Data))
+colSums(is.na(Data))
+```
+
+```{r}
+###Descriptive Analysis###
+
+summary(Data$Cement)
+sd(Data$Cement)
+hist(Data$Cement,xlab="Cement",main="Histogram of Cement")
+```
+
