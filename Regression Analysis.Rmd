@@ -10,3 +10,19 @@ Data<-read.csv("C:\\Users\\RISINA\\Desktop\\Concrete project\\Statistical_Modeli
 Data
 ```
 
+```{r}
+names(Data)
+```
+
+```{r}
+colnames(Data)=c("Cement","Blast_Furnace_Slag","Fly_Ash","Water","Superplasticizer","Coarse_
+Aggregate","Fine_Aggregate","Age_day","Concrete_compressive_strength")
+```
+
+```{r}
+names(Data)
+```
+```{r}
+head(Data)
+```
+
