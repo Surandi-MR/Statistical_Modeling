@@ -140,3 +140,18 @@ Aggregate','Fine_Aggregate','Age_day','Concrete_compressive_strength'))
 
 ```
 
+```{r}
+#Check above using boxplot
+
+num_cols <- ncol(cleaned_data_1) 
+
+grid_rows <- ceiling(sqrt(num_cols))
+grid_cols <- ceiling(num_cols / grid_rows)
+
+par(mfrow = c(grid_rows, grid_cols))  # Set up plotting grid
+
+for (col in names(cleaned_data_1)) {
+  boxplot(cleaned_data_1[[col]], main = paste("Boxplot of", col), ylab = "Values")
+}
+```
+
