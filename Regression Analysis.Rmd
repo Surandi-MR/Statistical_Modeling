@@ -38,5 +38,105 @@ colSums(is.na(Data))
 summary(Data$Cement)
 sd(Data$Cement)
 hist(Data$Cement,xlab="Cement",main="Histogram of Cement")
+
+#####################
+
+summary(Data$Blast_Furnace_Slag)
+sd(Data$Blast_Furnace_Slag)
+hist(Data$Blast_Furnace_Slag,xlab = "Blast_Furnace_Slag",main="Histogram of
+Blast_Furnace_Slag")
+
+#####################
+
+summary(Data$Fly_Ash)
+sd(Data$Fly_Ash)
+hist(Data$Fly_Ash,xlab = "Fly_Ash",main="Histogram of Fly_Ash")
+
+
+#####################
+
+summary(Data$Water)
+sd(Data$Water)
+hist(Data$Water,xlab = "Water",main="Histogram of Water")
+
+#####################
+
+summary(Data$Superplasticizer)
+sd(Data$Superplasticizer)
+hist(Data$Superplasticizer,xlab = "Superplasticizer",main="Histogram of
+Superplasticizer")
+
+#####################
+
+summary(Data$`Coarse_
+Aggregate`)
+sd(Data$`Coarse_
+Aggregate`)
+hist(Data$`Coarse_
+Aggregate`,xlab = "Coarse_Aggregate",main="Histogram of Coarse_Aggregate")
+
+#####################
+
+summary(Data$Fine_Aggregate)
+sd(Data$Fine_Aggregate)
+hist(Data$Fine_Aggregate,xlab = "Fine_Aggregate",main="Histogram of Fine_Aggregate")
+
+#####################
+
+summary(Data$Age_day)
+sd(Data$Age_day)
+hist(Data$Age_day,xlab = "Age_(day)",main="Histogram of Age_(day)")
+
+#####################
+
+summary(Data$Concrete_compressive_strength)
+sd(Data$Concrete_compressive_strength)
+hist(Data$Concrete_compressive_strength,xlab =
+"Concrete_compressive_strength",main="Histogram of
+Concrete_compressive_strength")
+
+```
+
+```{r}
+#Coarse_Aggregate=`Coarse_Aggregate`
+
+
+Data$`Coarse_
+Aggregate`
+
+```
+
+
+```{r}
+#Remove outliers
+
+remove_outliers<-function(column){
+  Q1<-quantile(column,0.25,na.rm=TRUE)
+  Q3<-quantile(column,0.75,na.rm=TRUE)
+  IQR<-Q3-Q1
+  
+  lower_bound<-Q1-1.5*IQR
+  upper_bound<-Q3+1.5*IQR
+  
+  column>upper_bound | column<lower_bound
+  
+}
+  
+ remove_outlier<-function(dataframe,columns=names(dataframe)){
+    for (col in columns) {
+
+ # remove observation if it satisfies outlier function
+ dataframe <- dataframe[!remove_outliers(dataframe[[col]]), ]
+ }
+
+ print("Remove outliers")
+ print(dataframe)
+
+ }
+ 
+cleaned_data_1<-remove_outlier(Data,c('Cement','Blast_Furnace_Slag','Fly_Ash','Water','Superplasticizer','Coarse_
+Aggregate','Fine_Aggregate','Age_day','Concrete_compressive_strength'))
+ 
+
 ```
 
